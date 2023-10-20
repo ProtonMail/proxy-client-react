@@ -48,18 +48,14 @@ const FlagProvider: React.FC<React.PropsWithChildren<IFlagProvider>> = ({
     }
 
     const errorCallback = (e: any) => {
-      React.startTransition(() => {
-        setFlagsError(currentError => currentError || e);
-      });
+      setFlagsError((currentError) => currentError || e);
     };
 
     let timeout: any;
     const readyCallback = () => {
       // wait for flags to resolve after useFlag gets the same event
       timeout = setTimeout(() => {
-        React.startTransition(() => {
-          setFlagsReady(true);
-        });
+        setFlagsReady(true);
       }, 0);
     };
 
